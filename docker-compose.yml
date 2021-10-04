@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  grpc-server:
+    build:
+      context: GrpcServer
+    volumes:
+      - ./src:/srv
+    ports:
+      - 5001:5001
+      - 5000:5000
+    networks:
+      - envoymesh      
+
+  envoy:
+    image: envoyproxy/envoy-dev
+    container_name: envoy
+    volumes:
+      - ./Envoy/envoy.yaml:/etc/envoy.yaml
+    networks:
+      - envoymesh
+    expose:
+      - "8888"
+      - "1337"
+    ports:
+      - "5002:5001"
+      - "1337:1337"
+
+networks:
+  envoymesh: {}      
