@@ -3,6 +3,8 @@
 # GrpcServer
 The actual implmentation of the remote procedure calls
 
+The GrpcServer also supports normal controller endpoints (alternative to using grpc-web with envoy)
+
 # GrpcClient
 An implementation of the GRPC client in c#
 
